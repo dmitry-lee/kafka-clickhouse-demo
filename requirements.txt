@@ -1,2 +1,3 @@
+ndjson
 requests
 kafka_python

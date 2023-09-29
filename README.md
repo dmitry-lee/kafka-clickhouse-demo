@@ -13,6 +13,10 @@ Deploy kafka cluster:
 
 `docker-compose -f common.yml -f kafka_cluster.yml up -d`
 
+If containers fail to start change owner of volumes directory:
+
+`sudo chown -hR <username> volumes/`
+
 Deploy clickhouse:
 
 `docker-compose -f common.yml -f clickhouse.yml up -d`
