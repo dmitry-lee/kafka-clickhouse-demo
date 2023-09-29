@@ -1,0 +1,4 @@
+.vscode
+volumes
+*.json
+*.ndjson
