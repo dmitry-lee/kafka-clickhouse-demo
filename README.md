@@ -25,7 +25,6 @@ Create kafka topic:
 ```
 docker-compose -f common.yml -f init_kafka.yml up
 ```
-
 Generate data and produce to kafka topic:
 ```
 cd ..
@@ -35,15 +34,6 @@ pip install -r requirements.txt
 python3 generate_users_ndjson.py
 
 python3 kafka_producer.py users.config.ini
-```
-
-Create clickhouse tables:
-```
-sh create_tables.sh
-```
-or
-```
-sudo docker exec -it clickhouse clickhouse-client --queries-file sql/create_tables.sql
 ```
 Run clickhouse client:
 ```
