@@ -48,9 +48,23 @@ last_name String,
 city String,
 country LowCardinality(String),
 username String,
-password String
+password String,
+date_of_birth Date,
+date_registered DateTime
 )
 ENGINE = MergeTree
 ORDER BY first_name;
 
+CREATE MATERIALIZED VIEW IF NOT EXISTS
+users_flat_mv TO users_flat
+AS SELECT
+tupleElement(name, 'first') AS first_name,
+tupleElement(name, 'last') AS last_name,
+tupleElement(location, 'city') AS city,
+tupleElement(location, 'country') AS country,
+tupleElement(login, 'username') AS username,
+tupleElement(login, 'password') AS password,
+toDate(parseDateTimeBestEffortOrNull(tupleElement(dob, 'date'))) AS date_of_birth,
+parseDateTimeBestEffortOrNull(tupleElement(registered, 'date')) AS date_registered
+FROM users_queue;
 EOSQL
