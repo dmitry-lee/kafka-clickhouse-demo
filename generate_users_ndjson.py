@@ -4,7 +4,7 @@ import argparse
 import sys
 
 
-quantity = 10
+quantity = 50
 if len(sys.argv) > 1:
     quantity = int(sys.argv[1])    
 URL = "https://randomuser.me/api/?results={}".format(quantity)
